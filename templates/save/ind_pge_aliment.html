@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Pure Beurre </title>
+
+  <!-- Font Awesome Icons -->
+  {% load static %}
+
+  <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css" />
+</head>
+
+  <!-- Plugin CSS -->
+  <!-- <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/magnific-popup/magnific-popup.css' %}">
+  <!-- Theme CSS - Includes Bootstrap -->
+  <!-- <link href="css/creative.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <img src="{% static 'img/logo_pur.png' %}" alt="logo_pur_beurre">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Pure Beurre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about"><button>Rechercher</button></a>
+          </li>
+          
+          <li class="nav-item">
+            
+            <a class="nav-link js-scroll-trigger" href="#services"><i class="fa fa-user fa-2x" aria-hidden="true" ></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio"><img src="{% static 'img/carrote.png'  %}" alt="Mes aliments"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-10 align-self-end">
+          <h1 class="text-uppercase text-white font-weight-bold text-center">{{product}}</h1>
+          <hr class="divider my-4">
+        </div>
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- !-- About Section -->
+  <!-- <section >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">{{user.email}}</h2>
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>  -->
+ 
+  <!-- Services Section -->
+  
+
+ <!-- Contact Section -->
+  <section class="page-section bg-primary">
+    <div class="container">
+
+      <div class="row h-100">
+        <div class="col-lg-6 text-center">
+          <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{nut}}.svg" alt="Note nutritionnelle NutriScore : {{nut}}" style="margin-bottom:1rem;max-width:100%">
+          
+          
+        </div> 
+        <div class="col-lg-6 ">
+          <div class="small-12 xlarge-6 columns">
+            <h4 >Repères nutritionnels pour 100g
+            </h4>
+            <img src="https://static.openfoodfacts.org/images/misc/{{lip}}.svg" width="30" height="30" style="vertical-align:middle;margin-right:15px;margin-bottom:4px;" alt="{{lip_1}}">
+            
+              {{lip_0}}g
+              <b>Matières grasses / Lipides</b> 
+              {{lip_1}}
+            
+            <br>
+            <img src="https://static.openfoodfacts.org/images/misc/{{sat}}.svg" width="30" height="30" style="vertical-align:middle;margin-right:15px;margin-bottom:4px;" alt="{{sat_1}}">
+            
+              {{sat_0}}g
+              <b>Acides gras saturés</b> 
+              {{sat_1}}
+            
+            <br>
+            <img src="https://static.openfoodfacts.org/images/misc/{{sugar}}.svg" width="30" height="30" style="vertical-align:middle;margin-right:15px;margin-bottom:4px;" alt="{{sugar_1}}">
+            
+              {{sugar_0}}g
+              <b>Sucres</b> 
+              {{sugar_1}}
+            
+            <br>
+            <img src="https://static.openfoodfacts.org/images/misc/{{sodium}}.svg" width="30" height="30" style="vertical-align:middle;margin-right:15px;margin-bottom:4px;" alt="{{sodium_1}}">
+            
+              {{sodium_0}}g
+              <b>Sel</b> 
+              {{sodium_1}}
+            
+            <br>
+
+          </div>
+        </div> 
+        
+        
+        <div class="col-lg-12 text-center">
+         <a class="btn btn-success" href="{{sub_url}}" role="button">Voir la fiche produit d'Openfoodfacts</a>
+        </div>
+
+     <!--  </div>
+      <div class="row">
+        <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+          <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+          <div>+1 (202) 555-0149</div>
+        </div>
+        <div class="col-lg-4 mr-auto text-center">
+          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+          Make sure to change the email address in anchor text AND the link below! --> 
+          <!-- <a class="d-block" href="mailto:contact@yourwebsite.com">contact@purebeurre.com</a>
+        </div> -->
+      </div> 
+    </div>
+  </section>
+
+  <!-- Footer-->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="small text-center text-muted">Mentions legales &nbsp; &nbsp; Contact</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <!-- Plugin JavaScript -->
+  
+  
+  <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/creative.min.js' %}"></script>
+
+</body>
+
+</html>

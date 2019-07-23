@@ -41,7 +41,7 @@ for search_term in search:
 		# selection data  type 
 	for product in products:
 	# test to ensure the our attributs presence 
-		if 'nutrition_grade_fr' in product.keys() and  'product_name_fr' in product.keys() and  'stores' in product.keys() and 'image_front_url'in product.keys():
+		if 'nutrition_grade_fr' in product.keys() and  'product_name_fr' in product.keys() and  'stores' in product.keys() and 'image_front_url'in product.keys() and 'nutriments' in product.keys() and 'nutrient_levels' in product.keys():
 			if 'url' in product.keys() and 'code' in product.keys() and 'ingredients_text_fr' in product.keys() and  'stores' in product.keys() and 'nutrition_score_debug' in product.keys():
 				store = product['stores']
 				code = product['code']
@@ -54,7 +54,10 @@ for search_term in search:
 				url = product['url']
 				ingred = product['ingredients_text_fr']
 				ingred = re.sub(r"\p{P}+", r"", ingred)
-				
+				nutriments = product['nutriments']
+				# nutriments = re.sub(r"\p{P}+", r"", nutriments)
+				nutrient_levels = product['nutrient_levels']
+				# nutrient_levels = re.sub(r"\p{P}+", r"", nutrient_levels)
 
 				# nutri_1.save()
 				# url_1 = Product(url=url)
@@ -90,7 +93,11 @@ for search_term in search:
 				# Create the model you want to save the image to
 				
 				# a = Product(image=(file_name, File(lf)))
-				p = Product(nutrition_score=nutri,url=url,description=ingred,name_product=prod,nutrition_100=nutri_100)
+				p = Product(nutrition_score=nutri,url=url,
+					        description=ingred,name_product=prod, 
+					        nutrition_100=nutri_100,
+					        nutriments=nutriments, 
+					        nutrient_levels= nutrient_levels)
 				p.image.save(file_name, File(lf))
 				p.save()
 	

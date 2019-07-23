@@ -12,8 +12,10 @@ class Category(models.Model):
 class Product(models.Model):
     name_product = models.CharField(max_length=1000)
     description = models.TextField()
-    url  = models.TextField()
-    nutrition_score = models.CharField(max_length=5)
+    nutriments = models.TextField()
+    nutrient_levels = models.CharField(max_length=3000)
+    url  = models.CharField(max_length=3000)
+    nutrition_score = models.CharField(max_length=10)
     nutrition_100 = models.CharField(max_length=5000)
     category = models.ManyToManyField("Category", related_name="cat_product")
     image = models.ImageField(upload_to='images/')
@@ -21,7 +23,10 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
     def __str__(self):
-        return '{} {} {} {}{}'.format(self.name_product, self.description, self.url, self.nutrition_score, self.nutrition_100)
+        return '{} {} {} {} {} {} {}'.format(self.name_product, self.description, 
+                                          self.url, self.nutrition_score, 
+                                          self.nutrition_100, self.nutriments,
+                                          self.nutrient_levels )
 # class Shop(models.Model):
 #     name_shop = models.CharField(max_length=20)
 #     def __str__(self):

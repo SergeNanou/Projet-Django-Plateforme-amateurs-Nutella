@@ -1883,7 +1883,7 @@ pre code {
 .table-dark > td {
   background-color: #c6c8ca;
 }
-
+ [class*="col"] { margin-bottom: 20px; }
 .table-dark th,
 .table-dark td,
 .table-dark thead th,
@@ -6916,7 +6916,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #f4623a !important;
+  background-color: #6495ED !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -10680,14 +10680,15 @@ header.masthead {
   background-size: cover;
 }
 
+
 header.masthead h1 {
   font-size: 2.25rem;
 }
 
 @media (min-width: 992px) {
   header.masthead {
-    height: 100vh;
-    min-height: 40rem;
+    height: 40vh;
+    min-height: 10rem;
     padding-top: 72px;
     padding-bottom: 0;
   }
@@ -10754,4 +10755,17 @@ header.masthead h1 {
 
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
+}
+.roundedImage, .roundedImageBorder{
+  overflow:hidden;
+  -webkit-border-radius:40px;
+  -moz-border-radius: 40%;
+  border-radius:40px;
+  width:60px;
+  height:60px;
+  text-align: center
+}
+
+.roundedImageBorder{
+  border: 1px solid #006699;
 }

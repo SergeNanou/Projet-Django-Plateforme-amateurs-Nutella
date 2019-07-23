@@ -21,17 +21,25 @@ from django.conf import settings
 from django.conf.urls import url,include
 import connect
 import research
+import save
 from research import views
 from connect import views
+from save import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^register/$',connect.views.register,name='register'),
+    url(r'^user_login/$',connect.views.user_login,name='user_login'),
+    url(r'^resultat/$', research.views.ind_pge_resultat,name='resultat'),
     url(r'^search/$', research.views.search,name='search'),
+    url(r'^save/$', save.views.save_prod,name='save'),
+    url(r'^aliment/$', save.views.aliment,name='aliment'),
     url(r'^$', connect.views.index,name='index'),
     url(r'^special/', connect.views.special,name='special'),
     url(r'^connect/', include('connect.urls')),
     url(r'^logout/$', connect.views.user_logout, name='logout'),
     url(r'ind_pge_connex/', connect.views.ind_pge_connex, name='ind_pge_connex'),
     url(r'ind_acceuil/', connect.views.ind_acceuil, name='ind_acceuil'),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

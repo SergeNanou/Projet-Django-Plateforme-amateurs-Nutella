@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Pure Beurre </title>
+
+  <!-- Font Awesome Icons -->
+  {% load static %}
+
+  <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css" />
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+  <!-- Plugin CSS -->
+  <!-- <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/magnific-popup/magnific-popup.css' %}">
+  <!-- Theme CSS - Includes Bootstrap -->
+  <!-- <link href="css/creative.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <img src="{% static 'img/logo_pur.png' %}" alt="logo_pur_beurre">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"><h1>Pure Beurre</h1></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about"><button>Rechercher</button></a>
+          </li>
+          
+          <li class="nav-item">
+            
+            <a class="nav-link js-scroll-trigger" href="#services"><i class="fa fa-user fa-2x" aria-hidden="true" ></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio"><img src="{% static 'img/carrote.png'  %}" alt="Mes aliments"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-10 align-self-end">
+          <h1 class="text-uppercase text-white font-weight-bold text-center">Favoris</h1>
+          <hr class="divider my-4">
+        </div>
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- !-- About Section -->
+  <!-- <section >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">{{user.email}}</h2>
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>  -->
+ 
+  <!-- Services Section -->
+  
+
+ <!-- Contact Section -->
+  <section class="page-section bg-primary">
+    <div class="container">
+
+      <div class="row h-100">
+        {% for aliment in save %}
+         
+        <div class="col-lg-4 text-center">
+         
+          <div >
+            <img src="{% static 'img/logo_pur.png' %}" width="175" height="175"alt="product" class="border border-primary rounded" alt="logo_pur_beurre">
+            
+            <div ><h4>{{aliment.name_product}}</h4> </div>
+            
+          </div>
+          </div>
+          <div class="col-lg-2 text-center">
+          <h1><span class="glyphicon glyphicon-arrow-right"></span> <br> Substitut </h1> 
+        </div> 
+        <div class="col-lg-4 text-center">
+          <div style="position:absolute;top:-30px; left:250px; z-index:1;font-size:35px; color: white;">
+                <div class="roundedImageBorder text-center" style= "background-color:red; ">{{aliment.prod_sub_nut}}</div>
+          </div> 
+          <div >
+            <img src={{aliment.image_product_subs}} width="175" height="175"alt="product_1" class="border border-primary rounded">
+            <div class = "text-center"><h4>{{aliment.name_product_subs}}</h4> </div>
+            <form action="{% url 'aliment' %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="subs_1" value="{{aliment.prod_sub_nut}}+{{aliment.nut_100}}+{{aliment.url_subs}}+{{aliment.name_product}}+{{aliment.nut_levels}}">
+              <button style="display: block;  margin: 0px auto 0 auto;"type="submit" class="btn btn-warning"><h4> Fiche Aliment</h4>
+              </button>
+            </form>
+          </div>
+        </div> 
+        {% endfor %}
+        
+        
+        <!-- <div class="col-lg-8 text-center">
+          <h2 class="mt-0">Contactez-nous !</h2>
+          <hr class="divider my-4">
+          <p class="text-muted mb-5">Ah+ la recherche d'aliments saints ! Un défi intéressant !</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+          <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+          <div>+1 (202) 555-0149</div>
+        </div>
+        <div class="col-lg-4 mr-auto text-center">
+          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+          Make sure to change the email address in anchor text AND the link below! -->
+          <!-- <a class="d-block" href="mailto:contact@yourwebsite.com">contact@purebeurre.com</a>
+        </div> -->
+      </div> 
+    </div>
+  </section>
+
+  <!-- Footer-->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="small text-center text-muted">Mentions legales &nbsp; &nbsp; Contact</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <!-- Plugin JavaScript -->
+  
+  
+  
+
+</body>
+
+</html>

@@ -1,12 +1,16 @@
-from django.shortcuts import render
-from save.models import Product_subs
-from django.contrib.auth.models import User
 import regex as re
 import ast
+from django.shortcuts import render
+from save.models import Product_subs
+from research.forms import SearchForm
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 # Create your views here.
 
-save = []
+
 def save_prod(request):
+    form = SearchForm()
     save = []
     if request.user.is_authenticated:
 
@@ -24,10 +28,29 @@ def save_prod(request):
                                                   nut_100=query[5],
                                                   cuurent_user=current_user.id,
                                                   url_subs=query[6],
-                                                  nut_levels=query[7])
+                                                  nut_levels=query[7],
+                                                  image_product=query[2])
         save = list(Product_subs.objects.filter(cuurent_user=current_user.id).values())
+        # Slice pages
+        paginator = Paginator(save, 2)
+        # Get current page number
+        page = request.GET.get('page')
+        try:
+            # Return only this page albums and not others
+            save = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            save = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            save = paginator.page(paginator.num_pages)
+            
+        
+        context_1 = {'form':form,'save': save}
+          
+        
         return render(request,'save/ind_pge_favorite.html',
-                         {"save": save})
+                      context_1)
     
        
 
@@ -41,6 +64,8 @@ def aliment(request):
     q_sugar_1 = ''
     q_sodium_fr = ''
     q_sodium_1 = ''
+    context = {}
+    form = SearchForm()
     if request.method == "POST":
         if request.user.is_authenticated:
             
@@ -86,23 +111,16 @@ def aliment(request):
                 q_sodium_1 = 'en quantité moyenne'
             elif q_sodium_fr == 'high':
                 q_sodium_1 = 'en quantité élevée'
-            
+            context = {"nut": query_1[0], "sub_url": query_1[2],
+                       "lip_0": query_lip, "lip": q_lip_fr,
+                       "lip_1": q_lip_1, "sat_0": query_sat,
+                       "sat": q_sat_fr, "sat_1": q_sat_1,
+                       "sugar_0": query_sugar, "sugar": q_sugar_fr,
+                       "sugar_1": q_sugar_1, "sodium_0": query_sodium,
+                       "sodium": q_sodium_fr, "sodium_1":q_sodium_1,
+                       "product": query_1[3], "form":form}
             return render(request,'save/ind_pge_aliment.html',
-                         {"nut": query_1[0], 
-                          "sub_url": query_1[2],
-                          "lip_0": query_lip,
-                          "lip": q_lip_fr,
-                          "lip_1": q_lip_1,
-                          "sat_0": query_sat,
-                          "sat": q_sat_fr,
-                          "sat_1": q_sat_1,
-                          "sugar_0": query_sugar,
-                          "sugar": q_sugar_fr,
-                          "sugar_1": q_sugar_1,
-                          "sodium_0": query_sodium,
-                          "sodium": q_sodium_fr,
-                          "sodium_1":q_sodium_1,
-                          "product": query_1[3]})
+                          context)
 
 
 

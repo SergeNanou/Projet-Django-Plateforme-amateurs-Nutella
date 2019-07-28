@@ -10,6 +10,13 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ body {
+        
+        overflow-x: hidden;
+        overflow-y: auto;
+        overflow : -moz-scrollbars-horizontal;
+
+        }
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

@@ -1,14 +1,16 @@
 
+import research.views
 from django.shortcuts import render
 from connect.forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-
+from research.forms import SearchForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def ind_pge_connex(request):
-    return render(request,'ind_pge_connex.html')
+    form = SearchForm()
+    return render(request,'ind_pge_connex.html',{'form':form})
 def ind_acceuil(request):
     return render(request,'ind_acceuil.html')
 def index(request):
@@ -19,7 +21,7 @@ def special(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('ind_acceuil'))
+    return HttpResponseRedirect(reverse('reception'))
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -46,7 +48,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('ind_pge_connex'))
+                return HttpResponseRedirect(reverse('reception'))
             else:
                 return HttpResponse("Your account was inactive.")
         else:

@@ -20,7 +20,21 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
   
 
-  <link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
+  <style type="text/css">
+    header.masthead {
+      padding-top: 10rem;
+      padding-bottom: calc(10rem - 72px);
+      background: -webkit-gradient(linear, left top, left bottom, from(rgba(92, 77, 66, 0.8)), to(rgba(92, 77, 66, 0.8))), url({{product}});
+      background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+                   url({{image}});
+      
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+    }
+  </style>
   
 
 </head>

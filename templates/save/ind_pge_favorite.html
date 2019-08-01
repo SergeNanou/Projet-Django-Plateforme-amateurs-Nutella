@@ -20,7 +20,8 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css">
   
 
-  <link rel="stylesheet" type="text/css" href="{% static 'css/creative.css' %}"> 
+  <link rel="stylesheet" type="text/css" href="{% static 'css/creative_1.css' %}"> 
+
   
 
 </head>
@@ -114,7 +115,7 @@
             <div class = "text-center">{{aliment.name_product_subs}}</div>
             <form action="{% url 'aliment' %}" method="POST">
               {% csrf_token %}
-              <input type="hidden" name="subs_1" value="{{aliment.prod_sub_nut}}+{{aliment.nut_100}}+{{aliment.url_subs}}+{{aliment.name_product}}+{{aliment.nut_levels}}">
+              <input type="hidden" name="subs_1" value="{{aliment.prod_sub_nut}}+{{aliment.nut_100}}+{{aliment.url_subs}}+{{aliment.name_product_subs}}+{{aliment.nut_levels}}+{{aliment.image_product_subs}}">
               <button style="display: block;  margin: 0px auto 0 auto;"type="submit" class="btn btn-warning">Fiche Aliment
               </button>
             </form>
